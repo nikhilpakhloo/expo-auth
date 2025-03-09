@@ -7,12 +7,13 @@ import { View, ActivityIndicator } from "react-native";
 import { getApp } from "@react-native-firebase/app";
 import { getAuth } from "@react-native-firebase/auth";
 
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<ReturnType<typeof getAuth>["currentUser"]>(null);
 
   useEffect(() => {
     async function prepare() {
