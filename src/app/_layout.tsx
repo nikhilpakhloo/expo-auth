@@ -1,47 +1,67 @@
-import { Stack } from "expo-router";
-import * as SplashScreen from 'expo-splash-screen';
-import { useCallback, useEffect, useState } from "react";
-import * as Font from 'expo-font';
-import Entypo from '@expo/vector-icons/Entypo';
-
+import { router, Stack } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect, useState } from "react";
+import * as Font from "expo-font";
+import Entypo from "@expo/vector-icons/Entypo";
+import { View, ActivityIndicator } from "react-native";
+import { getApp } from "@react-native-firebase/app";
+import { getAuth } from "@react-native-firebase/auth";
 
 SplashScreen.preventAutoHideAsync();
 
-SplashScreen.setOptions({
-  duration: 1000,
-  fade: true,
-});
-
-
-
 export default function RootLayout() {
   const [appIsReady, setAppIsReady] = useState(false);
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
     async function prepare() {
       try {
         await Font.loadAsync(Entypo.font);
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (e) {
         console.warn(e);
       } finally {
         setAppIsReady(true);
+        SplashScreen.hideAsync();
       }
     }
-  
     prepare();
   }, []);
-  if (appIsReady) {
-    SplashScreen.hideAsync();
+
+  useEffect(() => {
+    const auth = getAuth(getApp());
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+      if (initializing) setInitializing(false);
+    });
+
+    return unsubscribe; 
+  }, []);
+
+  useEffect(() => {
+    if (appIsReady && !initializing) {
+      if (user) {
+        router.replace("/(drawer)/(tabs)");
+      } else {
+        router.replace("/(auth)/signin");
+      }
+    }
+  }, [user, initializing, appIsReady]);
+
+  if (initializing || !appIsReady) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
   }
 
-  
-  return(
-  
-        <Stack   >
-          <Stack.Screen name="(drawer)" options={{headerShown:false}}/>  
-          <Stack.Screen name="notifications" options={{title:"Notifications"}}/>
-          
-        </Stack>
-        
-        )
+  return (
+    <Stack>
+      <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      <Stack.Screen name="notifications" options={{ title: "Notifications" }} />
+    </Stack>
+  );
 }
