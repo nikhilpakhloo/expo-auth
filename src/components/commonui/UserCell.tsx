@@ -7,7 +7,7 @@ export default function UserCell() {
 
     useEffect(() => {
         const auth = getAuth();
-        const unsubscribe = onAuthStateChanged(auth, (newUser) => {
+        const unsubscribe = onAuthStateChanged(auth, (newUser: ReturnType<typeof getAuth>["currentUser"]) => {
             setUser(newUser);
         });
 
