@@ -2,13 +2,13 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import UserCell from '../commonui/UserCell'
-import { DrawerItem ,  DrawerHeaderProps} from '@react-navigation/drawer'
+import { DrawerItem , DrawerContentComponentProps} from '@react-navigation/drawer'
 import { router } from 'expo-router'
 import  { getAuth , signOut} from "@react-native-firebase/auth";
 import { getApp } from '@react-native-firebase/app'
 
 
-export default function DrawerContent(props:DrawerHeaderProps) {
+export default function DrawerContent(props:DrawerContentComponentProps) {
   const gotonavigation = ()=>{
     router.navigate('/notifications')
     props.navigation.closeDrawer()

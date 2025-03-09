@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function Home() {
   return (
-    <View>
-      <Text>Home</Text>
+    <View className='flex-1 justify-center items-center'>
+      <Text className='text-4xl'>Home</Text>
     </View>
   )
 }

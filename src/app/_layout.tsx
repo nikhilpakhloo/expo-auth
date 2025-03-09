@@ -6,6 +6,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import { View, ActivityIndicator } from "react-native";
 import { getApp } from "@react-native-firebase/app";
 import { getAuth } from "@react-native-firebase/auth";
+import "./global.css"
 
 
 SplashScreen.preventAutoHideAsync();

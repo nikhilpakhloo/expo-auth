@@ -19,10 +19,10 @@ export default function SignIn() {
 
   return (
     <SafeAreaView>
-      <View style={{ padding: 20 }}>
+      <View className="p-5" >
         <Text>Email:</Text>
         <TextInput
-          style={{ borderWidth: 1, marginBottom: 10, padding: 8 }}
+          className="border mb-4 p-2"
           placeholder="Enter your email"
           autoCapitalize="none"
           keyboardType="email-address"
@@ -32,7 +32,7 @@ export default function SignIn() {
         
         <Text>Password:</Text>
         <TextInput
-          style={{ borderWidth: 1, marginBottom: 10, padding: 8 }}
+          className="border mb-4 p-2"
           placeholder="Enter your password"
           secureTextEntry
           value={password}
