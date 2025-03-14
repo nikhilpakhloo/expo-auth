@@ -6,7 +6,7 @@ import DrawerContent from '@/src/components/drawer/DrawerContent';
 export default function Layout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer drawerContent={(props)=><DrawerContent {...props}/>} screenOptions={{headerLeft:()=><DrawerButton/>, headerTitle:"Home"}}/>
+      <Drawer drawerContent={(props)=><DrawerContent {...props}/>} screenOptions={{ headerShown:false}}/>
     </GestureHandlerRootView>
   );
 }

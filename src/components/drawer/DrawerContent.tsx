@@ -45,7 +45,6 @@ export default function DrawerContent(props:DrawerContentComponentProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'skyblue'
   },
   topcol:{
     flex:1,

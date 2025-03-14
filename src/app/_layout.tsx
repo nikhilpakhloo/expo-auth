@@ -20,7 +20,6 @@ export default function RootLayout() {
     async function prepare() {
       try {
         await Font.loadAsync(Entypo.font);
-        await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (e) {
         console.warn(e);
       } finally {
@@ -54,7 +53,7 @@ export default function RootLayout() {
   if (initializing || !appIsReady) {
     return (
       <View className="flex-1 justify-center items-center">
-        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator size="large" color="red" />
       </View>
     );
   }

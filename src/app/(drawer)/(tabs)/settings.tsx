@@ -1,10 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import HomeSearchBar from '@/src/components/searchui/HomeSearchBar'
 
 export default function Settings() {
   return (
     <View>
-      <Text>Settings</Text>
+      <HomeSearchBar isShowSearchBar={false}/>
     </View>
   )
 }
