@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { getApp } from "@react-native-firebase/app";
 import { getAuth , signInWithEmailAndPassword} from "@react-native-firebase/auth";
 import { Link } from "expo-router";
@@ -19,9 +18,8 @@ export default function SignIn() {
   };
 
   return (
-      <View className="p-5 pt-10 flex-1" >
+      <View className="p-5  flex-1" >
 
-        <Text className="text-2xl mb-4 text-center">Login</Text>
         <Text>Email:</Text>
         <TextInput
           className="border mb-4 p-2"

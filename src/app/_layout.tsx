@@ -45,7 +45,7 @@ export default function RootLayout() {
       if (user) {
         router.replace("/(drawer)/(tabs)");
       } else {
-        router.replace("/(auth)/signin");
+        router.replace("/(auth)/welcome");
       }
     }
   }, [user, initializing, appIsReady]);

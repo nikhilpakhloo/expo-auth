@@ -31,9 +31,8 @@ export default function SignUp() {
     
   }
   return (
-  <View className="p-5 pt-10 flex-1" >
+  <View className="p-5  flex-1" >
  
-         <Text className="text-2xl mb-4 text-center">SignUp</Text>
          <Text>Email:</Text>
          <TextInput
            className="border mb-4 p-2"
@@ -57,7 +56,11 @@ export default function SignUp() {
          <Link href={"/(auth)/signin"} replace className=" mt-4">
          Already have an account? Sign in
          </Link>
- 
+
+
+      
+
+
        </View>
   )
 }
