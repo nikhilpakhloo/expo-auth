@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getApp } from "@react-native-firebase/app";
 import { getAuth , signInWithEmailAndPassword} from "@react-native-firebase/auth";
+import { Link } from "expo-router";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -18,8 +19,9 @@ export default function SignIn() {
   };
 
   return (
-    <SafeAreaView>
-      <View className="p-5" >
+      <View className="p-5 pt-10 flex-1" >
+
+        <Text className="text-2xl mb-4 text-center">Login</Text>
         <Text>Email:</Text>
         <TextInput
           className="border mb-4 p-2"
@@ -40,7 +42,10 @@ export default function SignIn() {
         />
 
         <Button title="Login" onPress={handleLogin} />
+        <Link href={"/(auth)/signup"} replace  className=" mt-4">
+        Not registered? Sign up.
+        </Link>
+
       </View>
-    </SafeAreaView>
   );
 }
